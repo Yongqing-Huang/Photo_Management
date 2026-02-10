@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.idea
+
+
+Photos/
+temp/
+Test/
+__pycache__/
+idea/
+
+config.py
