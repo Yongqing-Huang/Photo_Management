@@ -14,7 +14,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent
 LOG_DIR = PROJECT_ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
- # Create log file with date-time name
+# Create log file with date-time name
 now_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 LOG_FILE = LOG_DIR / f"{now_str}.log"
 
@@ -25,13 +25,11 @@ formatter = logging.Formatter(
     "%(asctime)s [%(levelname)s] %(message)s"
 )
 
-# Console handler (write to stdout so INFO is not red in PyCharm)
+# Console handler
 console_handler = logging.StreamHandler(sys.stdout)
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-# Rotating file handler (5MB per file, keep 5 backups)
-# File handler (one file per run)
 file_handler = logging.FileHandler(LOG_FILE)
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
