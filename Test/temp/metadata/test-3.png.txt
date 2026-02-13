@@ -1,0 +1,643 @@
+INFO KEYS:
+['icc_profile', 'dpi', 'xmp', 'XML:com.adobe.xmp']
+
+INFO DICT:
+icc_profile = b'\x00\x00\x020ADBE\x02\x10\x00\x00mntrRGB XYZ \x07\xcf\x00\x06\x00\x03\x00\x00\x00\x00\x00\x00acspAPPL\x00\x00\x00\x00none\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xf6\xd6\x00\x01\x00\x00\x00\x00\xd3-ADBE\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\ncprt\x00\x00\x00\xfc\x00\x00\x002desc\x00\x00\x010\x00\x00\x00kwtpt\x00\x00\x01\x9c\x00\x00\x00\x14bkpt\x00\x00\x01\xb0\x00\x00\x00\x14rTRC\x00\x00\x01\xc4\x00\x00\x00\x0egTRC\x00\x00\x01\xd4\x00\x00\x00\x0ebTRC\x00\x00\x01\xe4\x00\x00\x00\x0erXYZ\x00\x00\x01\xf4\x00\x00\x00\x14gXYZ\x00\x00\x02\x08\x00\x00\x00\x14bXYZ\x00\x00\x02\x1c\x00\x00\x00\x14text\x00\x00\x00\x00Copyright 1999 Adobe Systems Incorporated\x00\x00\x00desc\x00\x00\x00\x00\x00\x00\x00\x11Adobe RGB (1998)\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00XYZ \x00\x00\x00\x00\x00\x00\xf3Q\x00\x01\x00\x00\x00\x01\x16\xccXYZ \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00curv\x00\x00\x00\x00\x00\x00\x00\x01\x023\x00\x00curv\x00\x00\x00\x00\x00\x00\x00\x01\x023\x00\x00curv\x00\x00\x00\x00\x00\x00\x00\x01\x023\x00\x00XYZ \x00\x00\x00\x00\x00\x00\x9c\x18\x00\x00O\xa5\x00\x00\x04\xfcXYZ \x00\x00\x00\x00\x00\x004\x8d\x00\x00\xa0,\x00\x00\x0f\x95XYZ \x00\x00\x00\x00\x00\x00&1\x00\x00\x10/\x00\x00\xbe\x9c'
+dpi = (240.00459999999998, 240.00459999999998)
+xmp = b'<?xpacket begin="\xef\xbb\xbf" id="W5M0MpCehiHzreSzNTczkc9d"?>\n<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">\n <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">\n  <rdf:Description rdf:about=""\n    xmlns:xmp="http://ns.adobe.com/xap/1.0/"\n    xmlns:aux="http://ns.adobe.com/exif/1.0/aux/"\n    xmlns:exifEX="http://cipa.jp/exif/1.0/"\n    xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"\n    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"\n    xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"\n    xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"\n    xmlns:dc="http://purl.org/dc/elements/1.1/"\n    xmlns:Iptc4xmpCore="http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"\n    xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/"\n    xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"\n    xmlns:tiff="http://ns.adobe.com/tiff/1.0/"\n    xmlns:exif="http://ns.adobe.com/exif/1.0/"\n   xmp:CreatorTool="Adobe Lightroom 9.1 (Macintosh)"\n   xmp:ModifyDate="2026-02-12T19:35:44-07:00"\n   xmp:CreateDate="2022-11-04T22:40:44"\n   xmp:Rating="5"\n   xmp:MetadataDate="2026-02-12T19:35:44-07:00"\n   aux:LensInfo="880/100 22000/100 24/10 40/10"\n   aux:Lens="24-600mm F2.4-4.0"\n   aux:LensDistortInfo="1016792936/1073741824 48065807/1073741824 14355866/1073741824 -5489401/1073741824"\n   aux:DistortionCorrectionAlreadyApplied="True"\n   aux:LateralChromaticAberrationCorrectionAlreadyApplied="True"\n   exifEX:LensModel="24-600mm F2.4-4.0"\n   photoshop:DateCreated="2022-11-04T22:40:44"\n   photoshop:State="CO"\n   photoshop:City="Boulder"\n   photoshop:Country="United States of America"\n   xmpMM:DocumentID="xmp.did:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"\n   xmpMM:OriginalDocumentID="7B067D228B2868166AB42DA0C2631CB1"\n   xmpMM:InstanceID="xmp.iid:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"\n   dc:format="image/png"\n   Iptc4xmpCore:ExtDescrAccessibility="test"\n   Iptc4xmpCore:AltTextAccessibility="test"\n   xmpDM:good="True"\n   crs:RawFileName="DSC09369.ARW"\n   crs:Version="18.1"\n   crs:ProcessVersion="11.0"\n   crs:WhiteBalance="As Shot"\n   crs:Temperature="5850"\n   crs:Tint="+8"\n   crs:Exposure2012="+0.18"\n   crs:Contrast2012="+7"\n   crs:Highlights2012="-78"\n   crs:Shadows2012="+57"\n   crs:Whites2012="+46"\n   crs:Blacks2012="-40"\n   crs:Texture="0"\n   crs:Clarity2012="0"\n   crs:Dehaze="0"\n   crs:Vibrance="+13"\n   crs:Saturation="0"\n   crs:ParametricShadows="0"\n   crs:ParametricDarks="0"\n   crs:ParametricLights="0"\n   crs:ParametricHighlights="0"\n   crs:ParametricShadowSplit="25"\n   crs:ParametricMidtoneSplit="50"\n   crs:ParametricHighlightSplit="75"\n   crs:Sharpness="40"\n   crs:SharpenRadius="+1.0"\n   crs:SharpenDetail="25"\n   crs:SharpenEdgeMasking="0"\n   crs:LuminanceSmoothing="0"\n   crs:ColorNoiseReduction="25"\n   crs:ColorNoiseReductionDetail="50"\n   crs:ColorNoiseReductionSmoothness="50"\n   crs:HueAdjustmentRed="0"\n   crs:HueAdjustmentOrange="0"\n   crs:HueAdjustmentYellow="0"\n   crs:HueAdjustmentGreen="0"\n   crs:HueAdjustmentAqua="0"\n   crs:HueAdjustmentBlue="0"\n   crs:HueAdjustmentPurple="0"\n   crs:HueAdjustmentMagenta="0"\n   crs:SaturationAdjustmentRed="0"\n   crs:SaturationAdjustmentOrange="0"\n   crs:SaturationAdjustmentYellow="0"\n   crs:SaturationAdjustmentGreen="0"\n   crs:SaturationAdjustmentAqua="0"\n   crs:SaturationAdjustmentBlue="0"\n   crs:SaturationAdjustmentPurple="0"\n   crs:SaturationAdjustmentMagenta="0"\n   crs:LuminanceAdjustmentRed="0"\n   crs:LuminanceAdjustmentOrange="0"\n   crs:LuminanceAdjustmentYellow="0"\n   crs:LuminanceAdjustmentGreen="0"\n   crs:LuminanceAdjustmentAqua="0"\n   crs:LuminanceAdjustmentBlue="0"\n   crs:LuminanceAdjustmentPurple="0"\n   crs:LuminanceAdjustmentMagenta="0"\n   crs:SplitToningShadowHue="0"\n   crs:SplitToningShadowSaturation="0"\n   crs:SplitToningHighlightHue="0"\n   crs:SplitToningHighlightSaturation="0"\n   crs:SplitToningBalance="0"\n   crs:ColorGradeMidtoneHue="0"\n   crs:ColorGradeMidtoneSat="0"\n   crs:ColorGradeShadowLum="0"\n   crs:ColorGradeMidtoneLum="0"\n   crs:ColorGradeHighlightLum="0"\n   crs:ColorGradeBlending="50"\n   crs:ColorGradeGlobalHue="0"\n   crs:ColorGradeGlobalSat="0"\n   crs:ColorGradeGlobalLum="0"\n   crs:AutoLateralCA="0"\n   crs:LensProfileEnable="0"\n   crs:LensManualDistortionAmount="0"\n   crs:VignetteAmount="0"\n   crs:DefringePurpleAmount="0"\n   crs:DefringePurpleHueLo="30"\n   crs:DefringePurpleHueHi="70"\n   crs:DefringeGreenAmount="0"\n   crs:DefringeGreenHueLo="40"\n   crs:DefringeGreenHueHi="60"\n   crs:PerspectiveUpright="0"\n   crs:PerspectiveVertical="0"\n   crs:PerspectiveHorizontal="0"\n   crs:PerspectiveRotate="0.0"\n   crs:PerspectiveAspect="0"\n   crs:PerspectiveScale="100"\n   crs:PerspectiveX="0.00"\n   crs:PerspectiveY="0.00"\n   crs:GrainAmount="0"\n   crs:PostCropVignetteAmount="0"\n   crs:ShadowTint="0"\n   crs:RedHue="0"\n   crs:RedSaturation="0"\n   crs:GreenHue="0"\n   crs:GreenSaturation="0"\n   crs:BlueHue="0"\n   crs:BlueSaturation="0"\n   crs:HDREditMode="0"\n   crs:OverrideLookVignette="False"\n   crs:ToneCurveName2012="Linear"\n   crs:CameraProfile="Adobe Standard"\n   crs:CameraProfileDigest="28E3275D624C0E23F91DD80281CF1F5F"\n   crs:AutoToneDigest="E2673BF4B48BFE36D37D07F65CC425D9"\n   crs:AutoToneDigestNoSat="5EEE65E8334AA7AB6A416EBFE9D68D73"\n   crs:HasSettings="True"\n   crs:CropTop="0"\n   crs:CropLeft="0"\n   crs:CropBottom="1"\n   crs:CropRight="1"\n   crs:CropAngle="0"\n   crs:CropConstrainToWarp="0"\n   crs:CropConstrainToUnitSquare="1"\n   crs:HasCrop="False"\n   crs:AlreadyApplied="True"\n   tiff:Make="SONY"\n   tiff:Model="DSC-RX10M3"\n   tiff:XResolution="240/1"\n   tiff:YResolution="240/1"\n   tiff:ResolutionUnit="2"\n   exif:ExifVersion="0231"\n   exif:ExposureTime="1/250"\n   exif:ShutterSpeedValue="7965784/1000000"\n   exif:FNumber="4/1"\n   exif:ApertureValue="4/1"\n   exif:ExposureProgram="1"\n   exif:SensitivityType="2"\n   exif:RecommendedExposureIndex="100"\n   exif:BrightnessValue="19044/2560"\n   exif:ExposureBiasValue="0/10"\n   exif:MaxApertureValue="926/256"\n   exif:MeteringMode="3"\n   exif:LightSource="0"\n   exif:FocalLength="3351/100"\n   exif:FileSource="3"\n   exif:SceneType="1"\n   exif:FocalLengthIn35mmFilm="91"\n   exif:CustomRendered="0"\n   exif:ExposureMode="1"\n   exif:WhiteBalance="0"\n   exif:SceneCaptureType="0"\n   exif:Contrast="0"\n   exif:Saturation="0"\n   exif:Sharpness="0"\n   exif:DigitalZoomRatio="16/16"\n   exif:DateTimeOriginal="2022-11-04T22:40:44">\n   <xmpMM:History>\n    <rdf:Seq>\n     <rdf:li\n      stEvt:action="edited"\n      stEvt:when="2023-04-09T18:11:30Z"/>\n     <rdf:li\n      stEvt:action="derived"\n      stEvt:parameters="converted from image/x-sony-arw to image/png, saved to new location"/>\n     <rdf:li\n      stEvt:action="saved"\n      stEvt:instanceID="xmp.iid:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"\n      stEvt:when="2026-02-12T19:35:44-07:00"\n      stEvt:softwareAgent="Adobe Lightroom 9.1 (Macintosh)"\n      stEvt:changed="/"/>\n    </rdf:Seq>\n   </xmpMM:History>\n   <xmpMM:DerivedFrom\n    stRef:documentID="7B067D228B2868166AB42DA0C2631CB1"\n    stRef:originalDocumentID="7B067D228B2868166AB42DA0C2631CB1"/>\n   <dc:description>\n    <rdf:Alt>\n     <rdf:li xml:lang="x-default">test</rdf:li>\n    </rdf:Alt>\n   </dc:description>\n   <dc:title>\n    <rdf:Alt>\n     <rdf:li xml:lang="x-default">test</rdf:li>\n    </rdf:Alt>\n   </dc:title>\n   <crs:ToneCurvePV2012>\n    <rdf:Seq>\n     <rdf:li>0, 0</rdf:li>\n     <rdf:li>255, 255</rdf:li>\n    </rdf:Seq>\n   </crs:ToneCurvePV2012>\n   <crs:ToneCurvePV2012Red>\n    <rdf:Seq>\n     <rdf:li>0, 0</rdf:li>\n     <rdf:li>255, 255</rdf:li>\n    </rdf:Seq>\n   </crs:ToneCurvePV2012Red>\n   <crs:ToneCurvePV2012Green>\n    <rdf:Seq>\n     <rdf:li>0, 0</rdf:li>\n     <rdf:li>255, 255</rdf:li>\n    </rdf:Seq>\n   </crs:ToneCurvePV2012Green>\n   <crs:ToneCurvePV2012Blue>\n    <rdf:Seq>\n     <rdf:li>0, 0</rdf:li>\n     <rdf:li>255, 255</rdf:li>\n    </rdf:Seq>\n   </crs:ToneCurvePV2012Blue>\n   <crs:PointColors>\n    <rdf:Seq>\n     <rdf:li>-1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000</rdf:li>\n    </rdf:Seq>\n   </crs:PointColors>\n   <crs:ColorVariance>\n    <rdf:Seq>\n     <rdf:li>-50.000000</rdf:li>\n    </rdf:Seq>\n   </crs:ColorVariance>\n   <crs:Look>\n    <rdf:Description\n     crs:Name="Adobe Color"\n     crs:Amount="1"\n     crs:UUID="B952C231111CD8E0ECCF14B86BAA7077"\n     crs:SupportsAmount="false"\n     crs:SupportsMonochrome="false"\n     crs:SupportsOutputReferred="false">\n    <crs:Group>\n     <rdf:Alt>\n      <rdf:li xml:lang="x-default">Profiles</rdf:li>\n     </rdf:Alt>\n    </crs:Group>\n    <crs:Parameters>\n     <rdf:Description\n      crs:Version="18.1"\n      crs:ProcessVersion="15.4"\n      crs:ConvertToGrayscale="False"\n      crs:CameraProfile="Adobe Standard"\n      crs:LookTable="E1095149FDB39D7A057BAB208837E2E1">\n     <crs:ToneCurvePV2012>\n      <rdf:Seq>\n       <rdf:li>0, 0</rdf:li>\n       <rdf:li>22, 16</rdf:li>\n       <rdf:li>40, 35</rdf:li>\n       <rdf:li>127, 127</rdf:li>\n       <rdf:li>224, 230</rdf:li>\n       <rdf:li>240, 246</rdf:li>\n       <rdf:li>255, 255</rdf:li>\n      </rdf:Seq>\n     </crs:ToneCurvePV2012>\n     <crs:ToneCurvePV2012Red>\n      <rdf:Seq>\n       <rdf:li>0, 0</rdf:li>\n       <rdf:li>255, 255</rdf:li>\n      </rdf:Seq>\n     </crs:ToneCurvePV2012Red>\n     <crs:ToneCurvePV2012Green>\n      <rdf:Seq>\n       <rdf:li>0, 0</rdf:li>\n       <rdf:li>255, 255</rdf:li>\n      </rdf:Seq>\n     </crs:ToneCurvePV2012Green>\n     <crs:ToneCurvePV2012Blue>\n      <rdf:Seq>\n       <rdf:li>0, 0</rdf:li>\n       <rdf:li>255, 255</rdf:li>\n      </rdf:Seq>\n     </crs:ToneCurvePV2012Blue>\n     </rdf:Description>\n    </crs:Parameters>\n    </rdf:Description>\n   </crs:Look>\n   <exif:ISOSpeedRatings>\n    <rdf:Seq>\n     <rdf:li>100</rdf:li>\n    </rdf:Seq>\n   </exif:ISOSpeedRatings>\n   <exif:Flash\n    exif:Fired="False"\n    exif:Return="0"\n    exif:Mode="2"\n    exif:Function="False"\n    exif:RedEyeMode="False"/>\n  </rdf:Description>\n </rdf:RDF>\n</x:xmpmeta>\n               \n<?xpacket end="w"?>'
+XML:com.adobe.xmp = <?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about=""
+    xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+    xmlns:aux="http://ns.adobe.com/exif/1.0/aux/"
+    xmlns:exifEX="http://cipa.jp/exif/1.0/"
+    xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"
+    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+    xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
+    xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:Iptc4xmpCore="http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/"
+    xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+    xmlns:tiff="http://ns.adobe.com/tiff/1.0/"
+    xmlns:exif="http://ns.adobe.com/exif/1.0/"
+   xmp:CreatorTool="Adobe Lightroom 9.1 (Macintosh)"
+   xmp:ModifyDate="2026-02-12T19:35:44-07:00"
+   xmp:CreateDate="2022-11-04T22:40:44"
+   xmp:Rating="5"
+   xmp:MetadataDate="2026-02-12T19:35:44-07:00"
+   aux:LensInfo="880/100 22000/100 24/10 40/10"
+   aux:Lens="24-600mm F2.4-4.0"
+   aux:LensDistortInfo="1016792936/1073741824 48065807/1073741824 14355866/1073741824 -5489401/1073741824"
+   aux:DistortionCorrectionAlreadyApplied="True"
+   aux:LateralChromaticAberrationCorrectionAlreadyApplied="True"
+   exifEX:LensModel="24-600mm F2.4-4.0"
+   photoshop:DateCreated="2022-11-04T22:40:44"
+   photoshop:State="CO"
+   photoshop:City="Boulder"
+   photoshop:Country="United States of America"
+   xmpMM:DocumentID="xmp.did:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"
+   xmpMM:OriginalDocumentID="7B067D228B2868166AB42DA0C2631CB1"
+   xmpMM:InstanceID="xmp.iid:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"
+   dc:format="image/png"
+   Iptc4xmpCore:ExtDescrAccessibility="test"
+   Iptc4xmpCore:AltTextAccessibility="test"
+   xmpDM:good="True"
+   crs:RawFileName="DSC09369.ARW"
+   crs:Version="18.1"
+   crs:ProcessVersion="11.0"
+   crs:WhiteBalance="As Shot"
+   crs:Temperature="5850"
+   crs:Tint="+8"
+   crs:Exposure2012="+0.18"
+   crs:Contrast2012="+7"
+   crs:Highlights2012="-78"
+   crs:Shadows2012="+57"
+   crs:Whites2012="+46"
+   crs:Blacks2012="-40"
+   crs:Texture="0"
+   crs:Clarity2012="0"
+   crs:Dehaze="0"
+   crs:Vibrance="+13"
+   crs:Saturation="0"
+   crs:ParametricShadows="0"
+   crs:ParametricDarks="0"
+   crs:ParametricLights="0"
+   crs:ParametricHighlights="0"
+   crs:ParametricShadowSplit="25"
+   crs:ParametricMidtoneSplit="50"
+   crs:ParametricHighlightSplit="75"
+   crs:Sharpness="40"
+   crs:SharpenRadius="+1.0"
+   crs:SharpenDetail="25"
+   crs:SharpenEdgeMasking="0"
+   crs:LuminanceSmoothing="0"
+   crs:ColorNoiseReduction="25"
+   crs:ColorNoiseReductionDetail="50"
+   crs:ColorNoiseReductionSmoothness="50"
+   crs:HueAdjustmentRed="0"
+   crs:HueAdjustmentOrange="0"
+   crs:HueAdjustmentYellow="0"
+   crs:HueAdjustmentGreen="0"
+   crs:HueAdjustmentAqua="0"
+   crs:HueAdjustmentBlue="0"
+   crs:HueAdjustmentPurple="0"
+   crs:HueAdjustmentMagenta="0"
+   crs:SaturationAdjustmentRed="0"
+   crs:SaturationAdjustmentOrange="0"
+   crs:SaturationAdjustmentYellow="0"
+   crs:SaturationAdjustmentGreen="0"
+   crs:SaturationAdjustmentAqua="0"
+   crs:SaturationAdjustmentBlue="0"
+   crs:SaturationAdjustmentPurple="0"
+   crs:SaturationAdjustmentMagenta="0"
+   crs:LuminanceAdjustmentRed="0"
+   crs:LuminanceAdjustmentOrange="0"
+   crs:LuminanceAdjustmentYellow="0"
+   crs:LuminanceAdjustmentGreen="0"
+   crs:LuminanceAdjustmentAqua="0"
+   crs:LuminanceAdjustmentBlue="0"
+   crs:LuminanceAdjustmentPurple="0"
+   crs:LuminanceAdjustmentMagenta="0"
+   crs:SplitToningShadowHue="0"
+   crs:SplitToningShadowSaturation="0"
+   crs:SplitToningHighlightHue="0"
+   crs:SplitToningHighlightSaturation="0"
+   crs:SplitToningBalance="0"
+   crs:ColorGradeMidtoneHue="0"
+   crs:ColorGradeMidtoneSat="0"
+   crs:ColorGradeShadowLum="0"
+   crs:ColorGradeMidtoneLum="0"
+   crs:ColorGradeHighlightLum="0"
+   crs:ColorGradeBlending="50"
+   crs:ColorGradeGlobalHue="0"
+   crs:ColorGradeGlobalSat="0"
+   crs:ColorGradeGlobalLum="0"
+   crs:AutoLateralCA="0"
+   crs:LensProfileEnable="0"
+   crs:LensManualDistortionAmount="0"
+   crs:VignetteAmount="0"
+   crs:DefringePurpleAmount="0"
+   crs:DefringePurpleHueLo="30"
+   crs:DefringePurpleHueHi="70"
+   crs:DefringeGreenAmount="0"
+   crs:DefringeGreenHueLo="40"
+   crs:DefringeGreenHueHi="60"
+   crs:PerspectiveUpright="0"
+   crs:PerspectiveVertical="0"
+   crs:PerspectiveHorizontal="0"
+   crs:PerspectiveRotate="0.0"
+   crs:PerspectiveAspect="0"
+   crs:PerspectiveScale="100"
+   crs:PerspectiveX="0.00"
+   crs:PerspectiveY="0.00"
+   crs:GrainAmount="0"
+   crs:PostCropVignetteAmount="0"
+   crs:ShadowTint="0"
+   crs:RedHue="0"
+   crs:RedSaturation="0"
+   crs:GreenHue="0"
+   crs:GreenSaturation="0"
+   crs:BlueHue="0"
+   crs:BlueSaturation="0"
+   crs:HDREditMode="0"
+   crs:OverrideLookVignette="False"
+   crs:ToneCurveName2012="Linear"
+   crs:CameraProfile="Adobe Standard"
+   crs:CameraProfileDigest="28E3275D624C0E23F91DD80281CF1F5F"
+   crs:AutoToneDigest="E2673BF4B48BFE36D37D07F65CC425D9"
+   crs:AutoToneDigestNoSat="5EEE65E8334AA7AB6A416EBFE9D68D73"
+   crs:HasSettings="True"
+   crs:CropTop="0"
+   crs:CropLeft="0"
+   crs:CropBottom="1"
+   crs:CropRight="1"
+   crs:CropAngle="0"
+   crs:CropConstrainToWarp="0"
+   crs:CropConstrainToUnitSquare="1"
+   crs:HasCrop="False"
+   crs:AlreadyApplied="True"
+   tiff:Make="SONY"
+   tiff:Model="DSC-RX10M3"
+   tiff:XResolution="240/1"
+   tiff:YResolution="240/1"
+   tiff:ResolutionUnit="2"
+   exif:ExifVersion="0231"
+   exif:ExposureTime="1/250"
+   exif:ShutterSpeedValue="7965784/1000000"
+   exif:FNumber="4/1"
+   exif:ApertureValue="4/1"
+   exif:ExposureProgram="1"
+   exif:SensitivityType="2"
+   exif:RecommendedExposureIndex="100"
+   exif:BrightnessValue="19044/2560"
+   exif:ExposureBiasValue="0/10"
+   exif:MaxApertureValue="926/256"
+   exif:MeteringMode="3"
+   exif:LightSource="0"
+   exif:FocalLength="3351/100"
+   exif:FileSource="3"
+   exif:SceneType="1"
+   exif:FocalLengthIn35mmFilm="91"
+   exif:CustomRendered="0"
+   exif:ExposureMode="1"
+   exif:WhiteBalance="0"
+   exif:SceneCaptureType="0"
+   exif:Contrast="0"
+   exif:Saturation="0"
+   exif:Sharpness="0"
+   exif:DigitalZoomRatio="16/16"
+   exif:DateTimeOriginal="2022-11-04T22:40:44">
+   <xmpMM:History>
+    <rdf:Seq>
+     <rdf:li
+      stEvt:action="edited"
+      stEvt:when="2023-04-09T18:11:30Z"/>
+     <rdf:li
+      stEvt:action="derived"
+      stEvt:parameters="converted from image/x-sony-arw to image/png, saved to new location"/>
+     <rdf:li
+      stEvt:action="saved"
+      stEvt:instanceID="xmp.iid:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"
+      stEvt:when="2026-02-12T19:35:44-07:00"
+      stEvt:softwareAgent="Adobe Lightroom 9.1 (Macintosh)"
+      stEvt:changed="/"/>
+    </rdf:Seq>
+   </xmpMM:History>
+   <xmpMM:DerivedFrom
+    stRef:documentID="7B067D228B2868166AB42DA0C2631CB1"
+    stRef:originalDocumentID="7B067D228B2868166AB42DA0C2631CB1"/>
+   <dc:description>
+    <rdf:Alt>
+     <rdf:li xml:lang="x-default">test</rdf:li>
+    </rdf:Alt>
+   </dc:description>
+   <dc:title>
+    <rdf:Alt>
+     <rdf:li xml:lang="x-default">test</rdf:li>
+    </rdf:Alt>
+   </dc:title>
+   <crs:ToneCurvePV2012>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012>
+   <crs:ToneCurvePV2012Red>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012Red>
+   <crs:ToneCurvePV2012Green>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012Green>
+   <crs:ToneCurvePV2012Blue>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012Blue>
+   <crs:PointColors>
+    <rdf:Seq>
+     <rdf:li>-1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000</rdf:li>
+    </rdf:Seq>
+   </crs:PointColors>
+   <crs:ColorVariance>
+    <rdf:Seq>
+     <rdf:li>-50.000000</rdf:li>
+    </rdf:Seq>
+   </crs:ColorVariance>
+   <crs:Look>
+    <rdf:Description
+     crs:Name="Adobe Color"
+     crs:Amount="1"
+     crs:UUID="B952C231111CD8E0ECCF14B86BAA7077"
+     crs:SupportsAmount="false"
+     crs:SupportsMonochrome="false"
+     crs:SupportsOutputReferred="false">
+    <crs:Group>
+     <rdf:Alt>
+      <rdf:li xml:lang="x-default">Profiles</rdf:li>
+     </rdf:Alt>
+    </crs:Group>
+    <crs:Parameters>
+     <rdf:Description
+      crs:Version="18.1"
+      crs:ProcessVersion="15.4"
+      crs:ConvertToGrayscale="False"
+      crs:CameraProfile="Adobe Standard"
+      crs:LookTable="E1095149FDB39D7A057BAB208837E2E1">
+     <crs:ToneCurvePV2012>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>22, 16</rdf:li>
+       <rdf:li>40, 35</rdf:li>
+       <rdf:li>127, 127</rdf:li>
+       <rdf:li>224, 230</rdf:li>
+       <rdf:li>240, 246</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012>
+     <crs:ToneCurvePV2012Red>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012Red>
+     <crs:ToneCurvePV2012Green>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012Green>
+     <crs:ToneCurvePV2012Blue>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012Blue>
+     </rdf:Description>
+    </crs:Parameters>
+    </rdf:Description>
+   </crs:Look>
+   <exif:ISOSpeedRatings>
+    <rdf:Seq>
+     <rdf:li>100</rdf:li>
+    </rdf:Seq>
+   </exif:ISOSpeedRatings>
+   <exif:Flash
+    exif:Fired="False"
+    exif:Return="0"
+    exif:Mode="2"
+    exif:Function="False"
+    exif:RedEyeMode="False"/>
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>
+               
+<?xpacket end="w"?>
+
+TEXT KEYS:
+['XML:com.adobe.xmp']
+
+XML:com.adobe.xmp = <?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 7.0-c000 1.000000, 0000/00/00-00:00:00        ">
+ <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about=""
+    xmlns:xmp="http://ns.adobe.com/xap/1.0/"
+    xmlns:aux="http://ns.adobe.com/exif/1.0/aux/"
+    xmlns:exifEX="http://cipa.jp/exif/1.0/"
+    xmlns:photoshop="http://ns.adobe.com/photoshop/1.0/"
+    xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"
+    xmlns:stEvt="http://ns.adobe.com/xap/1.0/sType/ResourceEvent#"
+    xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:Iptc4xmpCore="http://iptc.org/std/Iptc4xmpCore/1.0/xmlns/"
+    xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/"
+    xmlns:crs="http://ns.adobe.com/camera-raw-settings/1.0/"
+    xmlns:tiff="http://ns.adobe.com/tiff/1.0/"
+    xmlns:exif="http://ns.adobe.com/exif/1.0/"
+   xmp:CreatorTool="Adobe Lightroom 9.1 (Macintosh)"
+   xmp:ModifyDate="2026-02-12T19:35:44-07:00"
+   xmp:CreateDate="2022-11-04T22:40:44"
+   xmp:Rating="5"
+   xmp:MetadataDate="2026-02-12T19:35:44-07:00"
+   aux:LensInfo="880/100 22000/100 24/10 40/10"
+   aux:Lens="24-600mm F2.4-4.0"
+   aux:LensDistortInfo="1016792936/1073741824 48065807/1073741824 14355866/1073741824 -5489401/1073741824"
+   aux:DistortionCorrectionAlreadyApplied="True"
+   aux:LateralChromaticAberrationCorrectionAlreadyApplied="True"
+   exifEX:LensModel="24-600mm F2.4-4.0"
+   photoshop:DateCreated="2022-11-04T22:40:44"
+   photoshop:State="CO"
+   photoshop:City="Boulder"
+   photoshop:Country="United States of America"
+   xmpMM:DocumentID="xmp.did:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"
+   xmpMM:OriginalDocumentID="7B067D228B2868166AB42DA0C2631CB1"
+   xmpMM:InstanceID="xmp.iid:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"
+   dc:format="image/png"
+   Iptc4xmpCore:ExtDescrAccessibility="test"
+   Iptc4xmpCore:AltTextAccessibility="test"
+   xmpDM:good="True"
+   crs:RawFileName="DSC09369.ARW"
+   crs:Version="18.1"
+   crs:ProcessVersion="11.0"
+   crs:WhiteBalance="As Shot"
+   crs:Temperature="5850"
+   crs:Tint="+8"
+   crs:Exposure2012="+0.18"
+   crs:Contrast2012="+7"
+   crs:Highlights2012="-78"
+   crs:Shadows2012="+57"
+   crs:Whites2012="+46"
+   crs:Blacks2012="-40"
+   crs:Texture="0"
+   crs:Clarity2012="0"
+   crs:Dehaze="0"
+   crs:Vibrance="+13"
+   crs:Saturation="0"
+   crs:ParametricShadows="0"
+   crs:ParametricDarks="0"
+   crs:ParametricLights="0"
+   crs:ParametricHighlights="0"
+   crs:ParametricShadowSplit="25"
+   crs:ParametricMidtoneSplit="50"
+   crs:ParametricHighlightSplit="75"
+   crs:Sharpness="40"
+   crs:SharpenRadius="+1.0"
+   crs:SharpenDetail="25"
+   crs:SharpenEdgeMasking="0"
+   crs:LuminanceSmoothing="0"
+   crs:ColorNoiseReduction="25"
+   crs:ColorNoiseReductionDetail="50"
+   crs:ColorNoiseReductionSmoothness="50"
+   crs:HueAdjustmentRed="0"
+   crs:HueAdjustmentOrange="0"
+   crs:HueAdjustmentYellow="0"
+   crs:HueAdjustmentGreen="0"
+   crs:HueAdjustmentAqua="0"
+   crs:HueAdjustmentBlue="0"
+   crs:HueAdjustmentPurple="0"
+   crs:HueAdjustmentMagenta="0"
+   crs:SaturationAdjustmentRed="0"
+   crs:SaturationAdjustmentOrange="0"
+   crs:SaturationAdjustmentYellow="0"
+   crs:SaturationAdjustmentGreen="0"
+   crs:SaturationAdjustmentAqua="0"
+   crs:SaturationAdjustmentBlue="0"
+   crs:SaturationAdjustmentPurple="0"
+   crs:SaturationAdjustmentMagenta="0"
+   crs:LuminanceAdjustmentRed="0"
+   crs:LuminanceAdjustmentOrange="0"
+   crs:LuminanceAdjustmentYellow="0"
+   crs:LuminanceAdjustmentGreen="0"
+   crs:LuminanceAdjustmentAqua="0"
+   crs:LuminanceAdjustmentBlue="0"
+   crs:LuminanceAdjustmentPurple="0"
+   crs:LuminanceAdjustmentMagenta="0"
+   crs:SplitToningShadowHue="0"
+   crs:SplitToningShadowSaturation="0"
+   crs:SplitToningHighlightHue="0"
+   crs:SplitToningHighlightSaturation="0"
+   crs:SplitToningBalance="0"
+   crs:ColorGradeMidtoneHue="0"
+   crs:ColorGradeMidtoneSat="0"
+   crs:ColorGradeShadowLum="0"
+   crs:ColorGradeMidtoneLum="0"
+   crs:ColorGradeHighlightLum="0"
+   crs:ColorGradeBlending="50"
+   crs:ColorGradeGlobalHue="0"
+   crs:ColorGradeGlobalSat="0"
+   crs:ColorGradeGlobalLum="0"
+   crs:AutoLateralCA="0"
+   crs:LensProfileEnable="0"
+   crs:LensManualDistortionAmount="0"
+   crs:VignetteAmount="0"
+   crs:DefringePurpleAmount="0"
+   crs:DefringePurpleHueLo="30"
+   crs:DefringePurpleHueHi="70"
+   crs:DefringeGreenAmount="0"
+   crs:DefringeGreenHueLo="40"
+   crs:DefringeGreenHueHi="60"
+   crs:PerspectiveUpright="0"
+   crs:PerspectiveVertical="0"
+   crs:PerspectiveHorizontal="0"
+   crs:PerspectiveRotate="0.0"
+   crs:PerspectiveAspect="0"
+   crs:PerspectiveScale="100"
+   crs:PerspectiveX="0.00"
+   crs:PerspectiveY="0.00"
+   crs:GrainAmount="0"
+   crs:PostCropVignetteAmount="0"
+   crs:ShadowTint="0"
+   crs:RedHue="0"
+   crs:RedSaturation="0"
+   crs:GreenHue="0"
+   crs:GreenSaturation="0"
+   crs:BlueHue="0"
+   crs:BlueSaturation="0"
+   crs:HDREditMode="0"
+   crs:OverrideLookVignette="False"
+   crs:ToneCurveName2012="Linear"
+   crs:CameraProfile="Adobe Standard"
+   crs:CameraProfileDigest="28E3275D624C0E23F91DD80281CF1F5F"
+   crs:AutoToneDigest="E2673BF4B48BFE36D37D07F65CC425D9"
+   crs:AutoToneDigestNoSat="5EEE65E8334AA7AB6A416EBFE9D68D73"
+   crs:HasSettings="True"
+   crs:CropTop="0"
+   crs:CropLeft="0"
+   crs:CropBottom="1"
+   crs:CropRight="1"
+   crs:CropAngle="0"
+   crs:CropConstrainToWarp="0"
+   crs:CropConstrainToUnitSquare="1"
+   crs:HasCrop="False"
+   crs:AlreadyApplied="True"
+   tiff:Make="SONY"
+   tiff:Model="DSC-RX10M3"
+   tiff:XResolution="240/1"
+   tiff:YResolution="240/1"
+   tiff:ResolutionUnit="2"
+   exif:ExifVersion="0231"
+   exif:ExposureTime="1/250"
+   exif:ShutterSpeedValue="7965784/1000000"
+   exif:FNumber="4/1"
+   exif:ApertureValue="4/1"
+   exif:ExposureProgram="1"
+   exif:SensitivityType="2"
+   exif:RecommendedExposureIndex="100"
+   exif:BrightnessValue="19044/2560"
+   exif:ExposureBiasValue="0/10"
+   exif:MaxApertureValue="926/256"
+   exif:MeteringMode="3"
+   exif:LightSource="0"
+   exif:FocalLength="3351/100"
+   exif:FileSource="3"
+   exif:SceneType="1"
+   exif:FocalLengthIn35mmFilm="91"
+   exif:CustomRendered="0"
+   exif:ExposureMode="1"
+   exif:WhiteBalance="0"
+   exif:SceneCaptureType="0"
+   exif:Contrast="0"
+   exif:Saturation="0"
+   exif:Sharpness="0"
+   exif:DigitalZoomRatio="16/16"
+   exif:DateTimeOriginal="2022-11-04T22:40:44">
+   <xmpMM:History>
+    <rdf:Seq>
+     <rdf:li
+      stEvt:action="edited"
+      stEvt:when="2023-04-09T18:11:30Z"/>
+     <rdf:li
+      stEvt:action="derived"
+      stEvt:parameters="converted from image/x-sony-arw to image/png, saved to new location"/>
+     <rdf:li
+      stEvt:action="saved"
+      stEvt:instanceID="xmp.iid:6c666c92-8f5b-43a4-9e67-87f549cc8a9f"
+      stEvt:when="2026-02-12T19:35:44-07:00"
+      stEvt:softwareAgent="Adobe Lightroom 9.1 (Macintosh)"
+      stEvt:changed="/"/>
+    </rdf:Seq>
+   </xmpMM:History>
+   <xmpMM:DerivedFrom
+    stRef:documentID="7B067D228B2868166AB42DA0C2631CB1"
+    stRef:originalDocumentID="7B067D228B2868166AB42DA0C2631CB1"/>
+   <dc:description>
+    <rdf:Alt>
+     <rdf:li xml:lang="x-default">test</rdf:li>
+    </rdf:Alt>
+   </dc:description>
+   <dc:title>
+    <rdf:Alt>
+     <rdf:li xml:lang="x-default">test</rdf:li>
+    </rdf:Alt>
+   </dc:title>
+   <crs:ToneCurvePV2012>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012>
+   <crs:ToneCurvePV2012Red>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012Red>
+   <crs:ToneCurvePV2012Green>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012Green>
+   <crs:ToneCurvePV2012Blue>
+    <rdf:Seq>
+     <rdf:li>0, 0</rdf:li>
+     <rdf:li>255, 255</rdf:li>
+    </rdf:Seq>
+   </crs:ToneCurvePV2012Blue>
+   <crs:PointColors>
+    <rdf:Seq>
+     <rdf:li>-1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000, -1.000000</rdf:li>
+    </rdf:Seq>
+   </crs:PointColors>
+   <crs:ColorVariance>
+    <rdf:Seq>
+     <rdf:li>-50.000000</rdf:li>
+    </rdf:Seq>
+   </crs:ColorVariance>
+   <crs:Look>
+    <rdf:Description
+     crs:Name="Adobe Color"
+     crs:Amount="1"
+     crs:UUID="B952C231111CD8E0ECCF14B86BAA7077"
+     crs:SupportsAmount="false"
+     crs:SupportsMonochrome="false"
+     crs:SupportsOutputReferred="false">
+    <crs:Group>
+     <rdf:Alt>
+      <rdf:li xml:lang="x-default">Profiles</rdf:li>
+     </rdf:Alt>
+    </crs:Group>
+    <crs:Parameters>
+     <rdf:Description
+      crs:Version="18.1"
+      crs:ProcessVersion="15.4"
+      crs:ConvertToGrayscale="False"
+      crs:CameraProfile="Adobe Standard"
+      crs:LookTable="E1095149FDB39D7A057BAB208837E2E1">
+     <crs:ToneCurvePV2012>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>22, 16</rdf:li>
+       <rdf:li>40, 35</rdf:li>
+       <rdf:li>127, 127</rdf:li>
+       <rdf:li>224, 230</rdf:li>
+       <rdf:li>240, 246</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012>
+     <crs:ToneCurvePV2012Red>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012Red>
+     <crs:ToneCurvePV2012Green>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012Green>
+     <crs:ToneCurvePV2012Blue>
+      <rdf:Seq>
+       <rdf:li>0, 0</rdf:li>
+       <rdf:li>255, 255</rdf:li>
+      </rdf:Seq>
+     </crs:ToneCurvePV2012Blue>
+     </rdf:Description>
+    </crs:Parameters>
+    </rdf:Description>
+   </crs:Look>
+   <exif:ISOSpeedRatings>
+    <rdf:Seq>
+     <rdf:li>100</rdf:li>
+    </rdf:Seq>
+   </exif:ISOSpeedRatings>
+   <exif:Flash
+    exif:Fired="False"
+    exif:Return="0"
+    exif:Mode="2"
+    exif:Function="False"
+    exif:RedEyeMode="False"/>
+  </rdf:Description>
+ </rdf:RDF>
+</x:xmpmeta>
+               
+<?xpacket end="w"?>
