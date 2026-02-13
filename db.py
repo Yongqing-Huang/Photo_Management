@@ -16,8 +16,7 @@ def sha256_file(path):
 
 
 # Helper: get photo id by sha256
-def get_photo_id_by_sha256(sha256: str):
-    conn = get_connection()
+def get_photo_id_by_sha256(conn, sha256: str):
     cur = conn.cursor()
     try:
         cur.execute(
@@ -28,12 +27,55 @@ def get_photo_id_by_sha256(sha256: str):
         return row[0] if row else None
     finally:
         cur.close()
-        conn.close()
 
 
+# Helper: get photo id by path
+def get_photo_id_by_path(conn, original_path: str):
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            """
+            SELECT id
+            FROM photos
+            WHERE original_path = %s LIMIT 1
+            """,
+            (original_path,)
+        )
+        row = cursor.fetchone()
+        return row[0] if row else None
+    finally:
+        cursor.close()
 
-def insert_full_metadata(photo_path: str, fields: dict):
-    conn = get_connection()
+
+# Helper: get sha256 by path
+def get_photo_sha256_by_path(conn, original_path: str):
+    cur = conn.cursor()
+    try:
+        cur.execute(
+            "SELECT original_sha256 FROM photos WHERE original_path=%s LIMIT 1",
+            (original_path,),
+        )
+        row = cur.fetchone()
+        return row[0] if row else None
+    finally:
+        cur.close()
+
+
+# Helper: get photo path by photo id
+def get_photo_path_by_id(conn, photo_id: int):
+    cur = conn.cursor()
+    try:
+        cur.execute(
+            "SELECT original_path FROM photos WHERE id=%s LIMIT 1",
+            (photo_id,),
+        )
+        row = cur.fetchone()
+        return row[0] if row else None
+    finally:
+        cur.close()
+
+
+def insert_full_metadata(conn, photo_path: str, fields: dict):
     cur = conn.cursor()
 
     try:
@@ -41,7 +83,7 @@ def insert_full_metadata(photo_path: str, fields: dict):
         # 1️⃣ Insert into photos
         # -------------------------
         sha256 = sha256_file(photo_path)
-        existing_id = get_photo_id_by_sha256(sha256)
+        existing_id = get_photo_id_by_sha256(conn, sha256)
         if existing_id is not None:
             print(f"Skip (duplicate): photo_id={existing_id}")
             return existing_id
@@ -158,17 +200,14 @@ def insert_full_metadata(photo_path: str, fields: dict):
 
     finally:
         cur.close()
-        conn.close()
 
 
-def fetch_all_photos():
-    conn = get_connection()
+def fetch_all_photos(conn):
     cur = conn.cursor(dictionary=True)
 
     cur.execute("SELECT * FROM photos")
     rows = cur.fetchall()
 
     cur.close()
-    conn.close()
 
     return rows
