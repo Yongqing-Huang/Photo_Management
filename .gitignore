@@ -2,9 +2,6 @@
 .env
 .idea
 
-
-Test/Photos/
-Test/temp/
 __pycache__/
 idea/
 logs/
