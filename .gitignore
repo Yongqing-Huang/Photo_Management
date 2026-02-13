@@ -3,9 +3,8 @@
 .idea
 
 
-Photos/
-temp/
-Test/
+Test/Photos/
+Test/temp/
 __pycache__/
 idea/
 logs/

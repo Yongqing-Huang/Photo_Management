@@ -1,6 +1,7 @@
 import mysql.connector
 from config import DB_CONFIG
 import hashlib
+import logging
 
 
 def get_connection():
@@ -85,7 +86,7 @@ def insert_full_metadata(conn, photo_path: str, fields: dict):
         sha256 = sha256_file(photo_path)
         existing_id = get_photo_id_by_sha256(conn, sha256)
         if existing_id is not None:
-            print(f"Skip (duplicate): photo_id={existing_id}")
+            logging.info(f"Skip (duplicate): photo_id={existing_id}")
             return existing_id
 
         cur.execute(
@@ -192,11 +193,11 @@ def insert_full_metadata(conn, photo_path: str, fields: dict):
         )
 
         conn.commit()
-        print(f"Inserted photo_id={photo_id}")
+        logging.info(f"Inserted photo_id={photo_id}")
 
     except Exception as e:
         conn.rollback()
-        print("Insert failed:", e)
+        logging.info("Insert failed:", e)
 
     finally:
         cur.close()

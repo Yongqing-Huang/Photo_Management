@@ -9,26 +9,18 @@ from db import *
 from photo_processing import *
 from metadata_preprocessing import *
 
-# --- Logging Setup ---
+# --- Logging Setup (file only) ---
 PROJECT_ROOT = Path(__file__).resolve().parent
 LOG_DIR = PROJECT_ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
-# Create log file with date-time name
 now_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 LOG_FILE = LOG_DIR / f"{now_str}.log"
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-formatter = logging.Formatter(
-    "%(asctime)s [%(levelname)s] %(message)s"
-)
-
-# Console handler
-console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
+formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
 
 file_handler = logging.FileHandler(LOG_FILE)
 file_handler.setFormatter(formatter)
@@ -169,6 +161,7 @@ def main():
                 logging.error(f"Failed processing {path}: {e}")
                 failed += 1
 
+        # Write to log
         logging.info("=== Ingest Summary ===")
         logging.info(f"Total scanned: {total}")
         logging.info(f"Inserted: {inserted}")
@@ -176,6 +169,16 @@ def main():
         logging.info(f"Skipped (duplicate content): {skipped_duplicate}")
         logging.info(f"Content changed: {changed}")
         logging.info(f"Failed: {failed}")
+
+        # Print Results
+        print("=== Ingest Summary ===")
+        print(f"Total scanned: {total}")
+        print(f"Inserted: {inserted}")
+        print(f"Skipped (path+sha match): {skipped_path_match}")
+        print(f"Skipped (duplicate content): {skipped_duplicate}")
+        print(f"Content changed: {changed}")
+        print(f"Failed: {failed}")
+        print(f"Log saved to: {LOG_FILE}")
     finally:
         conn.close()
 

@@ -3,6 +3,7 @@ from PIL.PngImagePlugin import PngImageFile
 import xml.etree.ElementTree as ET
 from datetime import datetime
 import os
+import logging
 
 def get_xmp_str(path: str) -> str:
     img = Image.open(path)
@@ -37,7 +38,7 @@ def export_metadata_to_txt(path, output_folder):
             for k, v in img.text.items():
                 f.write(f"{k} = {v}\n")
 
-    print("Saved metadata to:", out_path)
+    logging.info(f"Saved metadata to: {out_path}")
 
 
 def extract_xmp_fields(xmp_str: str) -> dict:
@@ -188,7 +189,7 @@ def normalize_xmp_fields(fields: dict) -> dict:
 
 
 if __name__ == "__main__":
-    path = "Photos/test.png"
+    path = "Test/Photos/test.png"
     output_folder = "temp"
     xmp_str = get_xmp_str(path)
     print(extract_xmp_fields(xmp_str))
