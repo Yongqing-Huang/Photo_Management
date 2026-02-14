@@ -4,6 +4,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 from datetime import datetime
 from pathlib import Path
+from tqdm import tqdm
 
 from db import *
 from photo_processing import *
@@ -30,9 +31,9 @@ logger.addHandler(file_handler)
 
 def ingest_photo(conn, photo: str, web_path: str, thumb_path: str, metadata_path: str):
     existing_path_id = get_photo_id_by_path(conn, photo)
+    new_sha = sha256_file(photo)
 
     if existing_path_id is not None:
-        new_sha = sha256_file(photo)
         stored_sha = get_photo_sha256_by_path(conn, photo)
 
         if new_sha == stored_sha:
@@ -47,7 +48,6 @@ def ingest_photo(conn, photo: str, web_path: str, thumb_path: str, metadata_path
         return 0, 1, 0, 0 # Just log, do nothing
 
     # Path not found — check duplicate content elsewhere
-    new_sha = sha256_file(photo)
     existing_sha_id = get_photo_id_by_sha256(conn, new_sha)
 
     if existing_sha_id is not None:
@@ -140,11 +140,22 @@ def main():
         allowed_exts = {e.strip().lower() for e in exts_raw.split(",") if e.strip()}
 
         # Now process files
-        for path in iter_files_recursive(photos_root):
+        pbar = tqdm(iter_files_recursive(photos_root), desc="Scanning", unit="file")
+        for path in pbar:
             total += 1
             try:
                 if allowed_exts and path.suffix.lower() not in allowed_exts:
+                    # keep bar updated even when skipping non-target extensions
+                    pbar.set_postfix(
+                        scanned=total,
+                        inserted=inserted,
+                        dup=skipped_duplicate,
+                        match=skipped_path_match,
+                        changed=changed,
+                        failed=failed,
+                    )
                     continue
+
                 d_skip_match, d_changed, d_dup, d_inserted = ingest_photo(
                     conn,
                     str(path),
@@ -157,9 +168,21 @@ def main():
                 changed += d_changed
                 skipped_duplicate += d_dup
                 inserted += d_inserted
+
             except Exception as e:
                 logging.error(f"Failed processing {path}: {e}")
                 failed += 1
+
+            # show live status + current file
+            pbar.set_postfix(
+                scanned=total,
+                inserted=inserted,
+                dup=skipped_duplicate,
+                match=skipped_path_match,
+                changed=changed,
+                failed=failed,
+            )
+            pbar.set_postfix_str(path.name[:50])
 
         # Write to log
         logging.info("=== Ingest Summary ===")

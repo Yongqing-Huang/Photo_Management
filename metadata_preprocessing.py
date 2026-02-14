@@ -189,7 +189,7 @@ def normalize_xmp_fields(fields: dict) -> dict:
 
 
 if __name__ == "__main__":
-    path = "Test/Photos/test.png"
+    path = "Test/Photos/test/test.png"
     output_folder = "temp"
     xmp_str = get_xmp_str(path)
     print(extract_xmp_fields(xmp_str))

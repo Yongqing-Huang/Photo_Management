@@ -2,6 +2,7 @@ import mysql.connector
 from config import DB_CONFIG
 import hashlib
 import logging
+from mysql.connector import Error
 
 
 def get_connection():
@@ -212,3 +213,20 @@ def fetch_all_photos(conn):
     cur.close()
 
     return rows
+
+
+
+def test_connection():
+    try:
+        conn = get_connection()
+        if conn.is_connected():
+            print("MySQL connection successful.")
+            print("Server version:", conn.get_server_info())
+        conn.close()
+    except Error as e:
+        print("MySQL connection failed.")
+        print("Error:", e)
+
+if __name__ == "__main__":
+    print("Testing database connection...")
+    test_connection()
