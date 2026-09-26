@@ -1,16 +1,12 @@
-import os
 import sys
-import logging
-from logging.handlers import RotatingFileHandler
-from datetime import datetime
 from pathlib import Path
 from tqdm import tqdm
 
-from db import *
-from photo_processing import *
-from metadata_preprocessing import *
+from src.photo_management.db import *
+from src.photo_management.photo_processing import *
+from src.photo_management.metadata_preprocessing import *
 
-# --- Logging Setup (file only) ---
+# Logging Setup
 PROJECT_ROOT = Path(__file__).resolve().parent
 LOG_DIR = PROJECT_ROOT / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -21,12 +17,13 @@ LOG_FILE = LOG_DIR / f"{now_str}.log"
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+
 formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
 
 file_handler = logging.FileHandler(LOG_FILE)
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
-# --- End Logging Setup ---
+
 
 
 def ingest_photo(conn, photo: str, web_path: str, thumb_path: str, metadata_path: str):
@@ -82,8 +79,17 @@ def ingest_photo(conn, photo: str, web_path: str, thumb_path: str, metadata_path
     except Exception as e:
         raise RuntimeError(f"export_thumb_jpg failed: {e}")
 
+    src = Path(photo)
+    web_out = Path(web_path) / (src.stem + ".jpg")
+    thumb_out = Path(thumb_path) / (src.stem + ".jpg")
+
+    variant_paths = {
+        "web": {"path": str(web_out)},
+        "thumb": {"path": str(thumb_out)},
+    }
+
     try:
-        insert_full_metadata(conn, photo, normalized_field)
+        insert_full_metadata(conn, photo, normalized_field, variant_paths=variant_paths)
     except Exception as e:
         raise RuntimeError(f"insert_full_metadata failed: {e}")
 
@@ -91,7 +97,6 @@ def ingest_photo(conn, photo: str, web_path: str, thumb_path: str, metadata_path
 
 
 def iter_files_recursive(root: Path):
-    """Yield all files under root recursively, skipping hidden files."""
     for dirpath, _, filenames in os.walk(root):
         for name in filenames:
             if name.startswith("."):

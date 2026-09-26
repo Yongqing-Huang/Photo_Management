@@ -1,9 +1,9 @@
 import mysql.connector
-from config import DB_CONFIG
+from src.photo_management.config import DB_CONFIG
 import hashlib
 import logging
 from mysql.connector import Error
-
+from pathlib import Path
 
 def get_connection():
     return mysql.connector.connect(**DB_CONFIG)
@@ -76,40 +76,129 @@ def get_photo_path_by_id(conn, photo_id: int):
     finally:
         cur.close()
 
-
-def insert_full_metadata(conn, photo_path: str, fields: dict):
+def upsert_photo_variants(conn, photo_id: int, variant_paths: dict):
     cur = conn.cursor()
 
     try:
-        # -------------------------
-        # 1️⃣ Insert into photos
-        # -------------------------
+        for variant_type, variant_info in variant_paths.items():
+
+            # Allow either:
+            # {"web": "/path/file.jpg"}
+            # or:
+            # {"web": {"path": "...", "width": ..., "height": ...}}
+
+            if isinstance(variant_info, str):
+                path = variant_info
+                width = None
+                height = None
+                sha256 = None
+                creator_tool = None
+            else:
+                path = variant_info.get("path")
+                width = variant_info.get("width")
+                height = variant_info.get("height")
+                sha256 = variant_info.get("sha256")
+                creator_tool = variant_info.get("creator_tool")
+
+            cur.execute(
+                """
+                INSERT INTO photo_variants (
+                    photo_id,
+                    variant_type,
+                    path,
+                    sha256,
+                    width,
+                    height,
+                    creator_tool
+                )
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+
+                ON DUPLICATE KEY UPDATE
+                    path = VALUES(path),
+                    sha256 = VALUES(sha256),
+                    width = VALUES(width),
+                    height = VALUES(height),
+                    creator_tool = VALUES(creator_tool)
+                """,
+                (
+                    photo_id,
+                    variant_type,
+                    path,
+                    sha256,
+                    width,
+                    height,
+                    creator_tool,
+                )
+            )
+
+    finally:
+        cur.close()
+
+
+def insert_full_metadata(
+    conn,
+    photo_path: str,
+    fields: dict,
+    variant_paths: dict | None = None
+):
+    cur = conn.cursor()
+
+    try:
+        # --------------------------------------------------
+        # Basic file information
+        # --------------------------------------------------
+        path = Path(photo_path)
+
         sha256 = sha256_file(photo_path)
+        filename = path.name
+        file_size = path.stat().st_size
+
+        # --------------------------------------------------
+        # Check duplicate
+        # --------------------------------------------------
         existing_id = get_photo_id_by_sha256(conn, sha256)
+
         if existing_id is not None:
-            logging.info(f"Skip (duplicate): photo_id={existing_id}")
+            logging.info(
+                f"Skip duplicate: photo_id={existing_id}, "
+                f"path={photo_path}"
+            )
             return existing_id
 
+        # --------------------------------------------------
+        # Photo
+        # --------------------------------------------------
         cur.execute(
             """
             INSERT INTO photos (
                 original_path,
+                original_filename,
                 original_sha256,
+                mime_type,
+                file_size,
+                width,
+                height,
                 datetime_original
             )
-            VALUES (%s,%s,%s)
-            ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """,
             (
-                photo_path,
+                str(path),
+                filename,
                 sha256,
+                fields.get("mime_type"),
+                file_size,
+                fields.get("width"),
+                fields.get("height"),
                 fields.get("datetime_original"),
             )
         )
 
         photo_id = cur.lastrowid
 
-        # Insert Camera Metadata
+        # --------------------------------------------------
+        # Camera metadata
+        # --------------------------------------------------
         cur.execute(
             """
             INSERT INTO camera_metadata (
@@ -122,7 +211,7 @@ def insert_full_metadata(conn, photo_path: str, fields: dict):
                 fnumber,
                 focal_length
             )
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """,
             (
                 photo_id,
@@ -136,7 +225,9 @@ def insert_full_metadata(conn, photo_path: str, fields: dict):
             )
         )
 
-        # Insert Photo Metadata
+        # --------------------------------------------------
+        # Text metadata
+        # --------------------------------------------------
         cur.execute(
             """
             INSERT INTO photo_text_metadata (
@@ -146,7 +237,7 @@ def insert_full_metadata(conn, photo_path: str, fields: dict):
                 alt_text,
                 extended_description
             )
-            VALUES (%s,%s,%s,%s,%s)
+            VALUES (%s, %s, %s, %s, %s)
             """,
             (
                 photo_id,
@@ -157,7 +248,11 @@ def insert_full_metadata(conn, photo_path: str, fields: dict):
             )
         )
 
-        # Insert Rating
+        # --------------------------------------------------
+        # Rating
+        # --------------------------------------------------
+        rating = fields.get("rating")
+
         cur.execute(
             """
             INSERT INTO photo_ratings (
@@ -165,40 +260,68 @@ def insert_full_metadata(conn, photo_path: str, fields: dict):
                 rating,
                 creator_tool
             )
-            VALUES (%s,%s,%s)
+            VALUES (%s, %s, %s)
             """,
             (
                 photo_id,
-                int(fields["rating"]) if fields.get("rating") else None,
+                int(rating) if rating is not None else None,
                 fields.get("creator_tool"),
             )
         )
 
-        # Insert Location
+        # --------------------------------------------------
+        # Location
+        # --------------------------------------------------
         cur.execute(
             """
             INSERT INTO photo_locations (
                 photo_id,
+                latitude,
+                longitude,
                 city,
                 state,
                 country
             )
-            VALUES (%s,%s,%s,%s)
+            VALUES (%s, %s, %s, %s, %s, %s)
             """,
             (
                 photo_id,
+                fields.get("latitude"),
+                fields.get("longitude"),
                 fields.get("city"),
                 fields.get("state"),
                 fields.get("country"),
             )
         )
 
-        conn.commit()
-        logging.info(f"Inserted photo_id={photo_id}")
+        # --------------------------------------------------
+        # Variants
+        # --------------------------------------------------
+        if variant_paths:
+            upsert_photo_variants(
+                conn,
+                photo_id,
+                variant_paths
+            )
 
-    except Exception as e:
+        # --------------------------------------------------
+        # Finish transaction
+        # --------------------------------------------------
+        conn.commit()
+
+        logging.info(
+            f"Inserted photo_id={photo_id}, "
+            f"filename={filename}"
+        )
+
+        return photo_id
+
+    except Exception:
         conn.rollback()
-        logging.info("Insert failed:", e)
+        logging.exception(
+            f"Failed to insert photo: {photo_path}"
+        )
+        raise
 
     finally:
         cur.close()
