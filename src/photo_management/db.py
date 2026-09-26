@@ -209,9 +209,10 @@ def insert_full_metadata(
                 iso,
                 exposure_time,
                 fnumber,
-                focal_length
+                focal_length,
+                focal_length_35mm
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             """,
             (
                 photo_id,
@@ -222,6 +223,7 @@ def insert_full_metadata(
                 fields.get("exposure_time"),
                 fields.get("fnumber"),
                 fields.get("focal_length"),
+                fields.get("focal_length_35mm"),
             )
         )
 

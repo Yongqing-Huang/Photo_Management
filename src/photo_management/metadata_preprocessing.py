@@ -90,6 +90,10 @@ def extract_exif_fields(path: str):
                 "exposure_time": exif_sub_data.get("ExposureTime"),
                 "fnumber": exif_sub_data.get("FNumber"),
                 "focal_length": exif_sub_data.get("FocalLength"),
+                "focal_length_35mm": (
+                        exif_sub_data.get("FocalLengthIn35mmFilm")
+                        or exif_sub_data.get("FocalLengthIn35mmFormat")
+                ),
                 "datetime_original": exif_sub_data.get("DateTimeOriginal"),
             })
 
@@ -165,6 +169,7 @@ def extract_xmp_fields(xmp_str: str):
         "exposure_time": get_attr("http://ns.adobe.com/exif/1.0/", "ExposureTime"),
         "fnumber": get_attr("http://ns.adobe.com/exif/1.0/", "FNumber"),
         "focal_length": get_attr("http://ns.adobe.com/exif/1.0/", "FocalLength"),
+        "focal_length_35mm": get_attr("http://ns.adobe.com/exif/1.0/","FocalLengthIn35mmFilm"),
         "datetime_original": get_attr("http://ns.adobe.com/exif/1.0/", "DateTimeOriginal"),
         "lr_exposure2012": get_attr("http://ns.adobe.com/camera-raw-settings/1.0/", "Exposure2012"),
         "state": get_attr("http://ns.adobe.com/photoshop/1.0/", "State"),
@@ -303,6 +308,7 @@ def normalize_metadata(fields: dict) -> dict:
         "exposure_time": exposure_to_string(fields.get("exposure_time")),
         "fnumber": frac_to_float(fields.get("fnumber")),
         "focal_length": frac_to_float(fields.get("focal_length")),
+        "focal_length_35mm": frac_to_float(fields.get("focal_length_35mm")),
 
         # Datetime
         "datetime_original": parse_datetime(

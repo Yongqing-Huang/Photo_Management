@@ -41,6 +41,7 @@ CREATE TABLE camera_metadata (
     exposure_time VARCHAR(32),
     fnumber FLOAT,
     focal_length FLOAT,
+    focal_length_35mm FLOAT,
 
     FOREIGN KEY (photo_id)
         REFERENCES photos(id)
