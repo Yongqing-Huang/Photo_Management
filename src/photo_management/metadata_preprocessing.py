@@ -186,19 +186,20 @@ def merge_metadata(exif_fields: dict, xmp_fields: dict) -> dict:
 
 # Convert EXIF fraction string to float
 def frac_to_float(x):
-    if not x:
+    if x is None:
         return None
 
-    if isinstance(x, str) and "/" in x:
-        try:
-            a, b = x.split("/")
-            return float(a) / float(b)
-        except Exception:
-            return None
-
     try:
+        if isinstance(x, str):
+            x = x.strip()
+
+            if "/" in x:
+                numerator, denominator = x.split("/", 1)
+                return float(numerator) / float(denominator)
+
         return float(x)
-    except Exception:
+
+    except (TypeError, ValueError, ZeroDivisionError):
         return None
 
 
@@ -243,6 +244,21 @@ def parse_datetime(value):
 def exposure_to_string(x):
     if x is None:
         return None
+
+    # XMP files has proper exposure time
+    if isinstance(x, str):
+        x = x.strip()
+
+        if "/" in x:
+            try:
+                numerator, denominator = x.split("/", 1)
+                numerator = int(numerator)
+                denominator = int(denominator)
+
+                if denominator != 0:
+                    return f"{numerator}/{denominator}"
+            except (ValueError, ZeroDivisionError):
+                pass
 
     try:
         seconds = float(x)
