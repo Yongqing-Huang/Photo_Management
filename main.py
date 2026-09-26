@@ -1,10 +1,15 @@
+import os
 import sys
-from pathlib import Path
 from tqdm import tqdm
+import logging
 
-from src.photo_management.db import *
-from src.photo_management.photo_processing import *
-from src.photo_management.metadata_preprocessing import *
+from datetime import datetime
+from pathlib import Path
+
+from dotenv import load_dotenv
+
+from src.photo_management.db import get_connection
+from src.photo_management.ingest import ingest_photo
 
 # Logging Setup
 PROJECT_ROOT = Path(__file__).resolve().parent
@@ -26,76 +31,6 @@ logger.addHandler(file_handler)
 
 
 
-def ingest_photo(conn, photo: str, web_path: str, thumb_path: str, metadata_path: str):
-    existing_path_id = get_photo_id_by_path(conn, photo)
-    new_sha = sha256_file(photo)
-
-    if existing_path_id is not None:
-        stored_sha = get_photo_sha256_by_path(conn, photo)
-
-        if new_sha == stored_sha:
-            # logging.info(f"Skip (path + sha match): {photo}")
-            return 1, 0, 0, 0
-
-        logging.warning("Content changed for existing path")
-        logging.warning(f"DB path: {photo}")
-        logging.warning(f"Old sha256: {stored_sha}")
-        logging.warning(f"New sha256: {new_sha}")
-
-        return 0, 1, 0, 0 # Just log, do nothing
-
-    # Path not found — check duplicate content elsewhere
-    existing_sha_id = get_photo_id_by_sha256(conn, new_sha)
-
-    if existing_sha_id is not None:
-        existing_path = get_photo_path_by_id(conn, existing_sha_id)
-
-        logging.info("Duplicate content found under different path")
-        logging.info(f"New path: {photo}")
-        logging.info(f"Existing path in DB: {existing_path}")
-
-        return 0, 0, 1, 0
-
-    try:
-        xmp_str = get_xmp_str(photo)
-    except Exception as e:
-        raise RuntimeError(f"get_xmp_str failed: {e}")
-
-    try:
-        export_metadata_to_txt(photo, metadata_path)
-    except Exception as e:
-        raise RuntimeError(f"export_metadata_to_txt failed: {e}")
-
-    field = extract_xmp_fields(xmp_str)
-    normalized_field = normalize_xmp_fields(field)
-
-    try:
-        export_web_jpg(photo, web_path)
-    except Exception as e:
-        raise RuntimeError(f"export_web_jpg failed: {e}")
-
-    try:
-        export_thumb_jpg(photo, thumb_path)
-    except Exception as e:
-        raise RuntimeError(f"export_thumb_jpg failed: {e}")
-
-    src = Path(photo)
-    web_out = Path(web_path) / (src.stem + ".jpg")
-    thumb_out = Path(thumb_path) / (src.stem + ".jpg")
-
-    variant_paths = {
-        "web": {"path": str(web_out)},
-        "thumb": {"path": str(thumb_out)},
-    }
-
-    try:
-        insert_full_metadata(conn, photo, normalized_field, variant_paths=variant_paths)
-    except Exception as e:
-        raise RuntimeError(f"insert_full_metadata failed: {e}")
-
-    return 0, 0, 0, 1
-
-
 def iter_files_recursive(root: Path):
     for dirpath, _, filenames in os.walk(root):
         for name in filenames:
@@ -105,13 +40,40 @@ def iter_files_recursive(root: Path):
 
 
 def main():
-    # Read from .env
+    # r
     total = 0
     inserted = 0
     skipped_path_match = 0
     skipped_duplicate = 0
     changed = 0
     failed = 0
+
+    # Load environment
+    try:
+        load_dotenv()
+    except Exception:
+        logging.error("Environment variables not set.")
+        sys.exit(1)
+
+    # Validate config
+    photos_root_raw = os.getenv("PHOTOS_ROOT")
+    if not photos_root_raw:
+        logging.error("PHOTOS_ROOT not set")
+        sys.exit(1)
+
+    photos_root_raw = os.getenv("PHOTOS_ROOT")
+    exports_root_raw = os.getenv("EXPORTS_ROOT")
+
+    if not photos_root_raw:
+        logging.error("PHOTOS_ROOT not set")
+        sys.exit(1)
+
+    if not exports_root_raw:
+        logging.error("EXPORTS_ROOT not set")
+        sys.exit(1)
+
+    photos_root = Path(photos_root_raw)
+    exports_root = Path(exports_root_raw)
 
     # DB must work or exit
     try:
@@ -122,29 +84,13 @@ def main():
 
 
     try:
-        try:
-            from dotenv import load_dotenv
-            load_dotenv()
-        except Exception:
-            logging.error("Environment variables not set.")
-            sys.exit(1)
-
-        # Validate config
-        photos_root_raw = os.getenv("PHOTOS_ROOT")
-        if not photos_root_raw:
-            logging.error("PHOTOS_ROOT not set")
-            sys.exit(1)
-
-        photos_root = Path(photos_root_raw)
-        exports_root = Path(os.getenv("EXPORTS_ROOT"))
-
         web_dir = exports_root / "Web"
         thumb_dir = exports_root / "Thumb"
         metadata_dir = exports_root / "Metadata"
         exts_raw = os.getenv("INGEST_EXTS", "")
         allowed_exts = {e.strip().lower() for e in exts_raw.split(",") if e.strip()}
 
-        # Now process files
+        # Process files
         pbar = tqdm(iter_files_recursive(photos_root), desc="Scanning", unit="file")
         for path in pbar:
             total += 1

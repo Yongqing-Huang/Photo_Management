@@ -18,6 +18,7 @@ CREATE TABLE photos (
     height INT UNSIGNED,
 
     datetime_original DATETIME,
+    file_modified_at DATETIME,
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

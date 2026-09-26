@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ExifTags
 from PIL.PngImagePlugin import PngImageFile
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -6,8 +6,16 @@ import os
 import logging
 
 def get_xmp_str(path: str) -> str:
-    img = Image.open(path)
-    return str(img.info[('XML:com.adobe.xmp')])
+    with Image.open(path) as img:
+        xmp = img.info.get("XML:com.adobe.xmp")
+
+        if xmp is None:
+            return None
+
+        if isinstance(xmp, bytes):
+            return xmp.decode("utf-8", errors="replace")
+
+        return str(xmp)
 
 
 def export_metadata_to_txt(path, output_folder):
@@ -41,7 +49,67 @@ def export_metadata_to_txt(path, output_folder):
     logging.info(f"Saved metadata to: {out_path}")
 
 
-def extract_xmp_fields(xmp_str: str) -> dict:
+def extract_exif_fields(path: str):
+    with Image.open(path) as img:
+        fields = {
+            "mime_type": Image.MIME.get(img.format),
+            "width": img.width,
+            "height": img.height,
+        }
+
+        exif = img.getexif()
+
+        if not exif:
+            return fields
+
+        # Main EXIF / IFD0
+        exif_data = {
+            ExifTags.TAGS.get(tag_id, tag_id): value
+            for tag_id, value in exif.items()
+        }
+
+        fields.update({
+            "make": exif_data.get("Make"),
+            "model": exif_data.get("Model"),
+        })
+
+        # EXIF sub-IFD
+        try:
+            exif_ifd = exif.get_ifd(ExifTags.IFD.Exif)
+
+            exif_sub_data = {
+                ExifTags.TAGS.get(tag_id, tag_id): value
+                for tag_id, value in exif_ifd.items()
+            }
+
+            fields.update({
+                "iso": (
+                    exif_sub_data.get("ISOSpeedRatings")
+                    or exif_sub_data.get("PhotographicSensitivity")
+                ),
+                "exposure_time": exif_sub_data.get("ExposureTime"),
+                "fnumber": exif_sub_data.get("FNumber"),
+                "focal_length": exif_sub_data.get("FocalLength"),
+                "datetime_original": exif_sub_data.get("DateTimeOriginal"),
+            })
+
+        except (KeyError, AttributeError):
+            pass
+
+        # Fallback dates
+        if not fields.get("datetime_original"):
+            fields["datetime_original"] = (
+                exif_data.get("DateTimeOriginal")
+                or exif_data.get("DateTime")
+            )
+
+        return fields
+
+
+def extract_xmp_fields(xmp_str: str):
+    if not xmp_str:
+        return {}
+
     start = xmp_str.find("<x:xmpmeta")
     if start != -1:
         xmp_str = xmp_str[start:]
@@ -106,6 +174,16 @@ def extract_xmp_fields(xmp_str: str) -> dict:
     }
 
 
+def merge_metadata(exif_fields: dict, xmp_fields: dict) -> dict:
+    merged = exif_fields.copy()
+
+    for key, value in xmp_fields.items():
+        if value is not None:
+            merged[key] = value
+
+    return merged
+
+
 # Convert EXIF fraction string to float
 def frac_to_float(x):
     if not x:
@@ -136,15 +214,56 @@ def parse_iso(x):
 
 
 # Convert ISO datetime to MySQL DATETIME string
-def parse_datetime(dt_str):
-    if not dt_str:
+def parse_datetime(value):
+    if not value:
+        return None
+
+    if isinstance(value, datetime):
+        return value.replace(tzinfo=None).strftime("%Y-%m-%d %H:%M:%S")
+
+    value = str(value).strip()
+
+    # XMP
+    try:
+        dt = datetime.fromisoformat(value)
+        return dt.replace(tzinfo=None).strftime("%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        pass
+
+    # Standard EXIF
+    try:
+        dt = datetime.strptime(value, "%Y:%m:%d %H:%M:%S")
+        return dt.strftime("%Y-%m-%d %H:%M:%S")
+    except ValueError:
+        pass
+
+    return None
+
+
+def exposure_to_string(x):
+    if x is None:
         return None
 
     try:
-        dt = datetime.fromisoformat(dt_str)
-        return dt.replace(tzinfo=None).strftime("%Y-%m-%d %H:%M:%S")
-    except Exception:
+        seconds = float(x)
+    except (TypeError, ValueError, ZeroDivisionError):
         return None
+
+    if seconds <= 0:
+        return None
+
+    # Exposure shorter than 1 second
+    if seconds < 1:
+        denominator = round(1 / seconds)
+        return f"1/{denominator}"
+
+    # Whole-second exposure
+    if seconds.is_integer():
+        return str(int(seconds))
+
+    # Longer fractional exposures
+    return f"{seconds:.1f}"
+
 
 
 # Remove Whitespace and Empty String
@@ -156,13 +275,16 @@ def clean_text(x):
     return x if x else None
 
 
-def normalize_xmp_fields(fields: dict) -> dict:
+
+
+def normalize_metadata(fields: dict) -> dict:
 
     return {
         **fields,
 
         # Camera numeric
         "iso": parse_iso(fields.get("iso")),
+        "exposure_time": exposure_to_string(fields.get("exposure_time")),
         "fnumber": frac_to_float(fields.get("fnumber")),
         "focal_length": frac_to_float(fields.get("focal_length")),
 
@@ -186,6 +308,22 @@ def normalize_xmp_fields(fields: dict) -> dict:
     }
 
 
+def extract_metadata(path: str) -> dict:
+    # EXIF
+    exif_fields = extract_exif_fields(path)
+
+    # XMP
+    xmp_str = get_xmp_str(path)
+    xmp_fields = extract_xmp_fields(xmp_str)
+
+    # Combine
+    fields = merge_metadata(
+        exif_fields,
+        xmp_fields
+    )
+
+    # Normalize for database
+    return normalize_metadata(fields)
 
 
 if __name__ == "__main__":
